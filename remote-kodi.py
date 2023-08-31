@@ -12,7 +12,7 @@ import psutil
 
 logger = logging.getLogger(__name__)
 
-class KodiMonitor:
+class KodiRemote:
     def __init__(self, host, port, log_level, kodi_user):
         self.host = host
         self.port = port
@@ -24,7 +24,7 @@ class KodiMonitor:
 
     def setup_logging(self):
         try:
-            logging.basicConfig(filename='kodi_monitor.log', level=self.log_level,
+            logging.basicConfig(filename='kodi_remote.log', level=self.log_level,
                             format='%(asctime)s - %(levelname)s - %(message)s')
         except Exception as e:
             logger.error(f"An error occurred while setting up the logger: {e}")
@@ -130,12 +130,12 @@ if __name__ == "__main__":
         logging.error("Error: User cannot be left blank.")
         sys.exit(1)
     
-    monitor = KodiMonitor(host='0.0.0.0', port=8080, log_level=args.log_level, kodi_user=args.user)
+    remote = KodiRemote(host='0.0.0.0', port=8080, log_level=args.log_level, kodi_user=args.user)
     logging.info(f"")
     user = os.getenv("USER")
     if not user:
         user = "systemd"
     logging.info(f"Starting the Kodi Remote Monitor by user : {user}")   
     logging.debug(f"Logging level is '{args.log_level}' and the kodi user is '{args.user}'")   
-    monitor.main_loop()
+    remote.main_loop()
     
