@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=kodi
-Exec=/home/media/kodi-monitor/kodistart.sh
+Exec=/home/USERNAME/kodi-monitor/kodistart.sh
 Comment=
 Terminal=false
 Icon=cinnamon-panel-launcher
