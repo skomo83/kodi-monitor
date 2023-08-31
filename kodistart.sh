@@ -4,5 +4,5 @@
 # add this to sudoers file
 # username ALL=(ALL) NOPASSWD: /bin/systemctl restart kodi-monitor.service
 
-sudo systemctl restart kodi-monitor.service && kodi
+sudo systemctl restart kodi-remote.service && kodi
 
