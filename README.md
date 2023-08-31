@@ -11,6 +11,8 @@ python3 monitor-kodi.py --log-level INFO --user USERNAME
 
 #the --log-level is optional as the default is set to INFO
 
+#the logs are stored at the same location as monitor-kodi.py
+
 #Change the kodi desktop icon to call kodistart.sh so that way the port bound to 8080 by the script gets released if starting Kodi from the desktop icon.
 
 #modify the kodi-monitor.service file to point to the correct location for the scripts
