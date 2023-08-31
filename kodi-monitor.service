@@ -1,0 +1,11 @@
+[Unit]
+Description=Kodi Monitor Script
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/media/kodi-monitor/monitor-kodi.py --log-level INFO --user media
+WorkingDirectory=/home/media/kodi-monitor/
+Restart=always
+
+[Install]
+WantedBy=default.target
