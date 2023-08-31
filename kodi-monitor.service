@@ -3,8 +3,8 @@ Description=Kodi Monitor Script
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 /home/media/kodi-monitor/monitor-kodi.py --log-level INFO --user media
-WorkingDirectory=/home/media/kodi-monitor/
+ExecStart=/usr/bin/python3 /home/USERNAME/kodi-monitor/monitor-kodi.py --log-level INFO --user USERNAME
+WorkingDirectory=/home/USERNAME/kodi-monitor/
 Restart=always
 
 [Install]
