@@ -1,32 +1,50 @@
 # kodi-monitor
-#Monitor port 8080 so that when you connect with the phone app and Kodi is not running, it will start up Kodi.
 
-#This is usefull when you use the Kodi iPhone app.
+kodi-monitor will monitor port 8080 so that when you connect with the phone app and Kodi is not running, it will start up Kodi.
 
-#run the program by using
 
+## Usage
+```bash
 python3 monitor-kodi.py --log-level INFO --user USERNAME
+```
 
-#the --user option is required,
+the --user option is required,
 
-#the --log-level is optional as the default is set to INFO
+the --log-level is optional as the default is set to INFO
 
-#the logs are stored at the same location as monitor-kodi.py
+the logs are stored at the same location as monitor-kodi.py
 
-#Change the kodi desktop icon to call kodistart.sh so that way the port bound to 8080 by the script gets released if starting Kodi from the desktop icon.
+Edit the kodi.desktop icon file to call kodistart.sh so the port bound to 8080 by the script gets released when starting Kodi from the desktop icon.
 
-#modify the kodi-monitor.service file to point to the correct location for the scripts
+Change the Exec line to match where you have the files
+```nano 
+Exec=/home/USERNAME/kodi-monitor/kodistart.sh
+```
 
-#copy kodi-monitor.service to /etc/systemd/service
+modify the kodi-monitor.service file to point to the correct location for the scripts
 
+this is where you can set the logging detail and you must set your linux login username
+```nano 
+ExecStart=/usr/bin/python3 /home/USERNAME/kodi-monitor/monitor-kodi.py --log-level INFO --user USERNAME
+```
+
+copy kodi-monitor.service to /etc/systemd/service
+```bash
+sudo cp kodi-monitor.service /etc/systemd/service
 sudo systemctl daemon-reload
-
 sudo systemctl start kodi-monitor.service
+```
 
-#test that it works.
+add your user to sudoers 
+```bash
+USERNAME ALL=(ALL) NOPASSWD: /bin/systemctl restart kodi-monitor.service
+```
 
-#once working, enable the service using 
 
+test that it works.
+once working, enable the service using 
+```bash
 sudo systemctl enable kodi-monitor.service
+```
 
-#enjoy
+enjoy
